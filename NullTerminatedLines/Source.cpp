@@ -10,6 +10,10 @@ void to_upper(char str[]);
 void to_lower(char str[]);
 void shrink(char str[]);
 
+bool is_int_number(char str[]);
+bool is_bin_number(char str[]);
+bool is_hex_number(char str[]);
+
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -29,13 +33,17 @@ void main()
 
 	cin.getline(str, n); // знает размер строки
 
-	cout << str << endl;
+	//cout << str << endl;
 	cout << StringLenght(str) << endl;
 	//to_upper(str);
 	//to_lower(str);
-	shrink(str);
+	//shrink(str);
+	//cout << str << endl;
 
-	cout << str << endl;
+	cout << "Является ли введённая строка двоичным числом? " << is_bin_number(str) << endl;
+	cout << "Является ли введённая строка десятичным числом? " << is_int_number(str) << endl;
+	cout << "Является ли введённая строка шестнадцатеричным числом? " << is_hex_number(str) << endl;
+
 	
 }
 
@@ -90,6 +98,60 @@ void shrink(char str[])
 			}
 			i--;
 		}
-		
 	}
+}
+
+bool is_int_number(char str[])
+{
+	if (StringLenght(str) > 1 && str[0] == '0') return false; // предполагаем, что десятичное число не может начинаться с нуля
+	int N = 0; // счётчик символов от 0 до 9
+	for (int i = 0; str[i]; i++)
+	{
+		if ((str[i] >= 48) && (str[i] <= 57))
+		{
+			N++;
+		}
+	}
+	if (N == StringLenght(str))
+	{
+		return true;
+	}
+	else return false;
+}
+
+bool is_bin_number(char str[])
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if ((str[i] != 48) && (str[i] != 49))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool is_hex_number(char str[])
+{
+	int N = 0; // счётчик символов от 0 до 9 и от a(A) до f(F)
+	for (int i = 0; str[i]; i++)
+	{
+		if ((str[i] >= 48) && (str[i] <= 57))
+		{
+			N++;
+		}
+		if ((str[i] >= 65) && (str[i] <= 70))
+		{
+			N++;
+		}
+		if ((str[i] >= 97) && (str[i] <= 102))
+		{
+			N++;
+		}
+	}
+	if (N == StringLenght(str))
+	{
+		return true;
+	}
+	else return false;
 }
