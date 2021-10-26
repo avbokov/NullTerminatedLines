@@ -1,11 +1,11 @@
-//NULL Terminated Lines
+п»ї//NULL Terminated Lines
 // '\0'
 #include<iostream>
 #include<Windows.h>
 
 using namespace std;
 
-int StringLenght(char str[]); // Принимает строку и возвращает размер строки
+int StringLenght(char str[]); // РџСЂРёРЅРёРјР°РµС‚ СЃС‚СЂРѕРєСѓ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё
 void to_upper(char str[]);
 void to_lower(char str[]);
 void shrink(char str[]);
@@ -13,21 +13,21 @@ void shrink(char str[]);
 void main()
 {
 	setlocale(LC_ALL, "");
-	SetConsoleCP(1251); // Выставляет кодировку на ввод
-	SetConsoleOutputCP(1251); // Выставляет кодировку на вывод
+	SetConsoleCP(1251); // Р’С‹СЃС‚Р°РІР»СЏРµС‚ РєРѕРґРёСЂРѕРІРєСѓ РЅР° РІРІРѕРґ
+	SetConsoleOutputCP(1251); // Р’С‹СЃС‚Р°РІР»СЏРµС‚ РєРѕРґРёСЂРѕРІРєСѓ РЅР° РІС‹РІРѕРґ
 
-	//char str[] = {'H', 'e', 'l', 'l', 'o','\0'}; // 1 способ
-	/*char str[] = "Hello";						   // 2 способ
+	//char str[] = {'H', 'e', 'l', 'l', 'o','\0'}; // 1 СЃРїРѕСЃРѕР±
+	/*char str[] = "Hello";						   // 2 СЃРїРѕСЃРѕР±
 	cout << str << endl;
 	cout << sizeof(str) << endl;
 	cout << str[1] << endl;*/
 
-	const int n = 30;								// 3 способ
+	const int n = 30;								// 3 СЃРїРѕСЃРѕР±
 	char str[n] = {};
-	cout << "Введите строку: "; // выводит символы в кодировке 866
-	//cin >> str; // не знает размер строки (после пробела для cin - другая переменная)
+	cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ: "; // РІС‹РІРѕРґРёС‚ СЃРёРјРІРѕР»С‹ РІ РєРѕРґРёСЂРѕРІРєРµ 866
+	//cin >> str; // РЅРµ Р·РЅР°РµС‚ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё (РїРѕСЃР»Рµ РїСЂРѕР±РµР»Р° РґР»СЏ cin - РґСЂСѓРіР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ)
 
-	cin.getline(str, n); // знает размер строки
+	cin.getline(str, n); // Р·РЅР°РµС‚ СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё
 
 	cout << str << endl;
 	cout << StringLenght(str) << endl;
