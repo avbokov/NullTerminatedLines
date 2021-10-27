@@ -60,7 +60,7 @@ void to_upper(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if ((str[i] >= 97) && (str[i] <= 122))
+		if ((str[i] >= 'a') && (str[i] <= 'z'))
 		{
 			str[i] = str[i] - 32;
 		}
@@ -75,7 +75,7 @@ void to_lower(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if ((str[i] >= 65) && (str[i] <= 90))
+		if ((str[i] >= 'A') && (str[i] <= 'Z'))
 		{
 			str[i] = str[i] + 32;
 		}

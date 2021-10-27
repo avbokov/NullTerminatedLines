@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+    <html lang="ru" data-n-head-ssr>
+        <head>
+        <script nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" id="client-metrics-observer">!function(e){"use strict";const t=(e,t)=>{e.LCP={value:0,entries:[]};const n=new PerformanceObserver((n=>{const r=n.getEntries(),s=r[r.length-1];e.LCP.value=s.renderTime||s.loadTime,t.collectEntries&&(e.LCP.entries=[...e.LCP.entries,...r])}));n.observe({type:"largest-contentful-paint",buffered:!0}),document.addEventListener(t.eventStopper,(function(){n.disconnect()}))},n=(e,n)=>{n.eventStarter?document.addEventListener(n.eventStarter,(()=>t(e,n))):t(e,n)},r=(e,t)=>{e.FID={value:0,entries:[]};const n=new PerformanceObserver((n=>{for(const r of n.getEntries())e.FID.value=r.processingStart-r.startTime,t.collectEntries&&e.FID.entries.push(r)}));n.observe({type:"first-input",buffered:!0}),document.addEventListener(t.eventStopper,(()=>{n.disconnect()}))},s=(e,t)=>{t.eventStarter?document.addEventListener(t.eventStarter,(()=>r(e,t))):r(e,t)},o=(e,t)=>{e.CLS={value:0,entries:[]};const n=new PerformanceObserver((n=>{for(const r of n.getEntries())r.hadRecentInput||(e.CLS.value+=r.value),t.collectEntries&&e.CLS.entries.push(r)}));n.observe({type:"layout-shift",buffered:!0}),document.addEventListener(t.eventStopper,(()=>{n.disconnect()}))},i=(e,t)=>{t.eventStarter?document.addEventListener(t.eventStarter,(()=>o(e,t))):o(e,t)},c=(e,t)=>{e.LT={value:0,entries:[]};const n=new PerformanceObserver((n=>{const r=n.getEntries();if(e.LT.value=r.length,t.collectEntries)for(const t of r)e.LT.entries.push(t)}));n.observe({type:"longtask",buffered:!0}),document.addEventListener(t.eventStopper,(function(){n.disconnect()}))},d=(e,t)=>{t.eventStarter?document.addEventListener(t.eventStarter,(()=>c(e,t))):c(e,t)},a={collectEntries:!1,eventStopper:"load",eventStarter:null},v=(e={})=>{const t=Object.assign(Object.assign({},a),e);window.$$windowMetrics=window.$$windowMetrics||{};const r=window.$$windowMetrics;n(r,t),s(r,t),i(r,t),d(r,t)};window.$getWebVitals$=v,e.default=v,e.getCLS=i,e.getFID=s,e.getLCP=n,e.getLT=d,Object.defineProperty(e,"__esModule",{value:!0})}({});</script>
+      <script nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" internal src="https://cdn1.ozone.ru/graphics/client-metrics/browser-detect/1.0.7.js"></script>
+      <script nonce="6891e594-8d24-4264-bf9a-f4f4d732804e">$getWebVitals$()</script>
+        
+        
+        
+        <script nonce="6891e594-8d24-4264-bf9a-f4f4d732804e">window.__getPublicPath=function(){return "https://cdn2.ozone.ru/assets/";}</script>
+        <meta charset="utf-8">
+        <meta name="yandex-verification" content="2bccd09858554e85">
+        <meta name="google" content="notranslate">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta name="yandex-tableau-widget" content="logo=/public/logo2019-y.png, color=#ffffff">
+        <meta nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" name="viewport" data-hid="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+        <link rel="apple-touch-icon" sizes="152x152" href="/public/touch-icon-ipad-retina.png">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/public/touch-icon-ipad-retina.png">
+        <link rel="search" type="application/opensearchdescription+xml" title="Ozon" href="/public/searchprovider.xml">
+        <link rel="manifest" href="/public/manifest.json">
+        <link nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" rel="preconnect" href="https://cdn2.ozone.ru"><link nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" rel="preconnect" href="https://cdn1.ozone.ru">
+        
+    <link nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" internal rel="preload" as="font" href="//cdn1.ozone.ru/graphics/test/fonts/GT-Eesti-Pro-Display-Medium.woff2" type="font/woff2" crossorigin="anonymous">
+    <link nonce="6891e594-8d24-4264-bf9a-f4f4d732804e" internal rel="preload" as="font" href="//cdn1.ozone.ru/graphics/test/fonts/GT-Eesti-Pro-Text-Book.woff2" type="font/woff2" crossorigin="anonymous">
+  
+  <style>
+  @font-face {
+    font-family: 'GTEestiPro';
+    font-weight: 700;
+    font-display: swap;
+    src: url('//cdn1.ozone.ru/graphics/test/fonts/GT-Eesti-Pro-Display-Medium.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'GTEestiPro';
+    font-weight: 400;
+    font-display: swap;
+    src: url('//cdn1.ozone.ru/graphics/test/fonts/GT-Eesti-Pro-Text-Book.woff2') format('woff2');
+  }
+  </style>
+  
+ 0seyJuYW1lIjoiYW5jaG9yVXJsIiwidGV4dCI6Ij90YWI9cmV2aWV3cyNjb21tZW50cy0tb2Zmc2V0LTkwIn1dfX0=","trackingOn":true,"widgetToken":"pghyrPm4MckgLB1QhVO33owCxv1oKLix7B1mAf5z0MVq","timeSpent":7294348,"name":"rpProduct.webReviewProductScore"},{"component":"webQuestionCount","params":"{\\"anchorUrl\\":\\"?tab=q-and-a#comments--offset-90\\"}","stateId":"webQuestionCount-726418-default-1","version":1,"vertical":"rpProduct","widgetTrackingInfo":"{\\"name\\":\\"rpProduct.webQuestionCount\\",\\"vertical\\":\\"rpProduct\\",\\"component\\":\\"webQuestionCount\\",\\"version\\":1,\\"id\\":726418,\\"revisionId\\":802227,\\"index\\":27}","trackingOn":true,"widgetToken":"Wnhx7vOr9flqkM9ncAwX3l4cVEY0notGg2OMWH2GnJyQ","timeSpent":7310556,"name":"rpProduct.webQuestionCount"},{"component":"webAddToCompare","params":"{\\"btnText\\":\\"Сравнивать\\",\\"btnTextActive\\":\\"В сравнение\\",\\"productAdded\\":\\"Товар добавлен в сравнение.\\",\\"theme\\":\\"theme1\\",\\"tooMuchText\\":\\"Вы добавили в сравнение максимальное количество товаров\\"}",
