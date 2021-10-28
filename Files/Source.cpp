@@ -53,8 +53,33 @@ void main()
 	fout.close();
 	system("more 201 ready.txt");
 	system("notepad 201 ready.txt");*/
-	ofstream fout("201 ready.txt", ios::app);
-	ifstream fin("201 RAW.txt");
+
+	const unsigned int SIZE = 256; // выделяем размер буфера в байтах
+	char sz_source_filename[SIZE] = {};
+	char sz_destination_filename[SIZE] = {};
+	cout << "Введите имя исходного файла: "; cin.getline(sz_source_filename, SIZE);
+	// 1) Находим последнюю точку в строке
+	char* extension = strrchr(sz_source_filename, '.');
+	// char* strchr(char* str, char symbol); синтаксис функции
+	// char* strrchr(char* str, char symbol); синтаксис функции
+	nullptr; // указатель на 0, указатель в никуда.
+	// 2) Теперь нужно проверить, являются ли символы после последней точке правильным расширением файла
+	if (extension == nullptr || strcmp(extension, ".txt") != 0)
+	{
+		strcat(sz_source_filename, ".txt");
+	}
+
+	//cout << (extension ? extension : "У файла нет расширения") << endl;
+	cout << "Введите имя конечного файла: "; cin.getline(sz_destination_filename, SIZE);
+	extension = strrchr(sz_destination_filename, '.');
+	if (extension == nullptr || strcmp(extension, ".txt") != 0)
+	{
+		strcat(sz_destination_filename, ".txt");
+	}
+	//cout << (extension ? extension : "У файла нет расширения") << endl;
+
+	ifstream fin(sz_source_filename);
+	ofstream fout(sz_destination_filename);
 	const unsigned int IP_SIZE = 16;
 	const unsigned int MAC_SIZE = 18;
 	char sz_ip_buffer[IP_SIZE] = {};
@@ -78,5 +103,12 @@ void main()
 	fin.close();
 	fout.close();
 
-	system("notepad 201 ready.txt");
+	char sz_cmd[SIZE] = "notepad ";
+	strcat(sz_cmd, sz_destination_filename);
+	// strcat(sz_dst, sz_src); //strcat выполняет конкатенацию (слияние) строк,
+	// например, "Hello" + "World" = "HelloWorld";
+	// sz_dst - строка получатель, в которую будет сохранен результат конкатенации
+	// sz_src - строка источник, которая будет добавлена к получателю
+
+	system(sz_cmd);
 }
