@@ -10,9 +10,15 @@ void to_upper(char str[]);
 void to_lower(char str[]);
 void shrink(char str[]);
 
+bool is_palindrome(char str[]);
 bool is_int_number(char str[]);
 bool is_bin_number(char str[]);
 bool is_hex_number(char str[]);
+
+int string_to_int(char str[]);
+int bin_to_int(char str[]);
+int hex_to_int(char str[]);
+
 
 void main()
 {
@@ -32,19 +38,18 @@ void main()
 	//cin >> str; // не знает размер строки (после пробела для cin - другая переменная)
 
 	cin.getline(str, n); // знает размер строки
-
+	cout << endl;
 	//cout << str << endl;
-	cout << StringLenght(str) << endl;
+	//cout << StringLenght(str) << endl;
 	//to_upper(str);
 	//to_lower(str);
 	//shrink(str);
 	//cout << str << endl;
 
-	cout << "Является ли введённая строка двоичным числом? " << is_bin_number(str) << endl;
-	cout << "Является ли введённая строка десятичным числом? " << is_int_number(str) << endl;
-	cout << "Является ли введённая строка шестнадцатеричным числом? " << is_hex_number(str) << endl;
-
-	
+	cout << "Является ли введённая строка палиндромом? " << is_palindrome(str) << endl;
+	cout << "Является ли введённая строка двоичным числом? " << is_bin_number(str) << " Десятичное: " << bin_to_int(str) << endl;
+	cout << "Является ли введённая строка десятичным числом? " << is_int_number(str) << " Десятичное: " << string_to_int(str) << endl;
+	cout << "Является ли введённая строка шестнадцатеричным числом? " << is_hex_number(str) << " Десятичное: " << hex_to_int(str) << endl;
 }
 
 int StringLenght(char str[])
@@ -64,7 +69,7 @@ void to_upper(char str[])
 		{
 			str[i] = str[i] - 32;
 		}
-		if ((str[i] >= -32) && (str[i] <= -1))
+		if ((str[i] >= 'а') && (str[i] <= 'я'))
 		{
 			str[i] = str[i] - 32;
 		}
@@ -79,7 +84,7 @@ void to_lower(char str[])
 		{
 			str[i] = str[i] + 32;
 		}
-		if ((str[i] >= -64) && (str[i] <= -33))
+		if ((str[i] >= 'А') && (str[i] <= 'Я'))
 		{
 			str[i] = str[i] + 32;
 		}
@@ -99,6 +104,41 @@ void shrink(char str[])
 			i--;
 		}
 	}
+}
+
+bool is_palindrome(char str[])
+{
+	for (int i = 0; str[i]; i++)
+	{
+		if (str[i] == ' ')
+		{
+			for (int j = i; str[j]; j++) str[j] = str[j + 1];
+			i--;
+		}
+	}
+	to_lower(str);
+
+	int N = StringLenght(str); // Вариант 2
+	int middle = N / 2;
+
+	for (int i = 0; i < middle; i++)
+	{
+		if (str[i] == str[N - i - 1]) continue;
+		else return false;
+	}
+	
+	//int N = StringLenght(str); // Вариант 1
+	//const int n = 30;
+	//char str_buffer[n] = {};
+	// 
+	//for (int i = 0; str[i]; i++)
+	//{
+	//	str_buffer[i] = str[N - i - 1];
+	//	if (str_buffer[i] == str[i]) continue;
+	//	else return false;
+	//}
+
+	return true;
 }
 
 bool is_int_number(char str[])
@@ -123,7 +163,7 @@ bool is_bin_number(char str[])
 {
 	for (int i = 0; str[i]; i++)
 	{
-		if ((str[i] != 48) && (str[i] != 49))
+		if ((str[i] != '0') && (str[i] != '1'))
 		{
 			return false;
 		}
@@ -131,27 +171,113 @@ bool is_bin_number(char str[])
 	return true;
 }
 
+//bool is_hex_number(char str[])
+//{
+//	int N = 0; // счётчик символов от 0 до 9 и от a(A) до f(F)
+//	for (int i = 0; str[i]; i++)
+//	{
+//		if ((str[i] >= 48) && (str[i] <= 57))
+//		{
+//			N++;
+//		}
+//		if ((str[i] >= 'A') && (str[i] <= 'F'))
+//		{
+//			N++;
+//		}
+//		if ((str[i] >= 'a') && (str[i] <= 'f'))
+//		{
+//			N++;
+//		}
+//	}
+//	if (N == StringLenght(str))
+//	{
+//		return true;
+//	}
+//	else return false;
+//}
+
 bool is_hex_number(char str[])
 {
-	int N = 0; // счётчик символов от 0 до 9 и от a(A) до f(F)
-	for (int i = 0; str[i]; i++)
+	bool hex_number = 1;
+	int n = StringLenght(str);
+	for (int i = 0; i < n; i++)
 	{
-		if ((str[i] >= 48) && (str[i] <= 57))
+		if ((str[i] > '9' || str[i] < '0') && (str[i] < 'A' || str[i] > 'F') && (str[i] < 'a' || str[i] > 'f'))
 		{
-			N++;
-		}
-		if ((str[i] >= 65) && (str[i] <= 70))
-		{
-			N++;
-		}
-		if ((str[i] >= 97) && (str[i] <= 102))
-		{
-			N++;
+			hex_number = 0;
+			break;
 		}
 	}
-	if (N == StringLenght(str))
+	return hex_number;
+}
+
+int string_to_int(char str[])
+{
+	if (is_int_number(str) == true)
 	{
-		return true;
+		int N = 1;
+		int S = 0;
+		int Lenght = StringLenght(str);
+		for (int i = 0; str[i]; i++)
+		{
+			for (int j = Lenght - 1 - i; j > 0; j--)
+			{
+				N = N * 10;
+			}
+			S = S + (N * (str[i] - 48));
+			N = 1;
+		}
+		return S;
+	}
+	else return false;
+}
+
+int bin_to_int(char str[])
+{
+	if (is_bin_number(str) == true)
+	{
+		int N = 1;
+		int S = 0;
+		int Lenght = StringLenght(str);
+		for (int i = 0; str[i]; i++)
+		{
+			for (int j = Lenght - 1 - i; j > 0; j--)
+			{
+				N = N * 2;
+			}
+			S = S + (N * (str[i] - 48));
+			N = 1;
+		}
+		return S;
+	}
+	else return false;
+}
+
+int hex_to_int(char str[])
+{
+	if (is_hex_number(str) == true)
+	{
+		int N = 1;
+		int S = 0;
+		//int Lenght = StringLenght(str);
+		for (int i = 0; str[i]; i++)
+		{
+			for (int j = StringLenght(str) - 1 - i; j > 0; j--)
+			{
+				N = N * 16;
+			}
+			if ((str[i] >= 48) && (str[i] <= 57))
+			{
+				str[i] = str[i] - 48;
+			}
+			if ((str[i] >= 'a') && (str[i] <= 'f'))
+			{
+				str[i] = str[i] - 87;
+			}
+			S = S + (N * (str[i]));
+			N = 1;
+		}
+		return S;
 	}
 	else return false;
 }
