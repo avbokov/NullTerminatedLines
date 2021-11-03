@@ -41,15 +41,19 @@ void main()
 	cout << endl;
 	//cout << str << endl;
 	//cout << StringLenght(str) << endl;
-	//to_upper(str);
+	to_upper(str);
 	//to_lower(str);
 	//shrink(str);
-	//cout << str << endl;
+	cout << str << endl;
 
-	cout << "Является ли введённая строка палиндромом? " << is_palindrome(str) << endl;
-	cout << "Является ли введённая строка двоичным числом? " << is_bin_number(str) << " Десятичное: " << bin_to_int(str) << endl;
-	cout << "Является ли введённая строка десятичным числом? " << is_int_number(str) << " Десятичное: " << string_to_int(str) << endl;
-	cout << "Является ли введённая строка шестнадцатеричным числом? " << is_hex_number(str) << " Десятичное: " << hex_to_int(str) << endl;
+	//cout << "Является ли введённая строка палиндромом? " << is_palindrome(str) << endl;
+	//cout << "Является ли введённая строка двоичным числом? " << is_bin_number(str) << " Десятичное: " << bin_to_int(str) << endl;
+	//cout << "Является ли введённая строка десятичным числом? " << is_int_number(str) << " Десятичное: " << string_to_int(str) << endl;
+	//cout << "Является ли введённая строка шестнадцатеричным числом? " << (is_hex_number(str)) << " Десятичное: " << hex_to_int(str) << endl;
+	//cout << (is_hex_number(str));
+	//cout << " Десятичное: "
+	//	<< hex_to_int(str) << endl;
+
 }
 
 int StringLenght(char str[])
@@ -63,7 +67,7 @@ int StringLenght(char str[])
 
 void to_upper(char str[])
 {
-	for (int i = 0; str[i]; i++)
+	/*for (int i = 0; str[i]; i++)
 	{
 		if ((str[i] >= 'a') && (str[i] <= 'z'))
 		{
@@ -73,6 +77,19 @@ void to_upper(char str[])
 		{
 			str[i] = str[i] - 32;
 		}
+	}*/
+
+	/*for (int i = 0; i < 256; i++)
+	{
+		cout << i << "\t" << (char)i << endl;
+	}*/
+
+	for (int i = 0; str[i]; i++)
+	{
+		//if (str[i] >= 'a' && str[i] <= 'z')str[i] -= 32;
+		str[i] = toupper(str[i]); // Функция toupper() возвращает принятую букву в верхнем регистре
+		// Функции toupper() и tolower() находятся в библиотеке ctype.h (cctype).
+		// http://cplusplus.com/reference/cctype/
 	}
 }
 
@@ -171,45 +188,47 @@ bool is_bin_number(char str[])
 	return true;
 }
 
-//bool is_hex_number(char str[])
-//{
-//	int N = 0; // счётчик символов от 0 до 9 и от a(A) до f(F)
-//	for (int i = 0; str[i]; i++)
-//	{
-//		if ((str[i] >= 48) && (str[i] <= 57))
-//		{
-//			N++;
-//		}
-//		if ((str[i] >= 'A') && (str[i] <= 'F'))
-//		{
-//			N++;
-//		}
-//		if ((str[i] >= 'a') && (str[i] <= 'f'))
-//		{
-//			N++;
-//		}
-//	}
-//	if (N == StringLenght(str))
-//	{
-//		return true;
-//	}
-//	else return false;
-//}
-
 bool is_hex_number(char str[])
 {
-	bool hex_number = 1;
-	int n = StringLenght(str);
-	for (int i = 0; i < n; i++)
+	int N = 0; // счётчик символов от 0 до 9 и от a(A) до f(F)
+	for (int i = 0; str[i]; i++)
 	{
-		if ((str[i] > '9' || str[i] < '0') && (str[i] < 'A' || str[i] > 'F') && (str[i] < 'a' || str[i] > 'f'))
+		if ((str[i] >= 48) && (str[i] <= 57))
 		{
-			hex_number = 0;
-			break;
+			N++;
+		}
+		if ((str[i] >= 'A') && (str[i] <= 'F'))
+		{
+			N++;
+		}
+		if ((str[i] >= 'a') && (str[i] <= 'f'))
+		{
+			N++;
 		}
 	}
-	return hex_number;
+	if (N == StringLenght(str))
+	{
+		return true;
+	}
+	else return false;
 }
+
+//bool is_hex_number(char str[])
+//{
+//	bool hex_number = true;
+//	int n = StringLenght(str);
+//	for (int i = 0; str[i]; i++)
+//	{
+//		if ((str[i] > '9' || str[i] < '0') && (str[i] < 'A' || str[i] > 'F') && (str[i] < 'a' || str[i] > 'f'))
+//		{
+//			return false;
+//			hex_number = false;
+//			break;
+//		}
+//	}
+//	return true;
+//	return hex_number;
+//}
 
 int string_to_int(char str[])
 {
