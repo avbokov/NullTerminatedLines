@@ -1,5 +1,5 @@
-#include<iostream>
-#include<fstream> // File straem (файловые потоки)
+п»ї#include<iostream>
+#include<fstream> // File straem (С„Р°Р№Р»РѕРІС‹Рµ РїРѕС‚РѕРєРё)
 using namespace std;
 
 //#define WRITE_TO_FILE
@@ -10,43 +10,43 @@ void main()
 	setlocale(LC_ALL, "");
 #ifdef WRITE_TO_FILE
 	//cout << "Hello World" << endl;
-	ofstream fout("file.txt", ios::app);		// создаём и открываем поток
+	ofstream fout("file.txt", ios::app);		// СЃРѕР·РґР°С‘Рј Рё РѕС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє
 	fout << "Hello World" << endl;
-	fout.close();					// потоки обязательно нужно закрывать
-	//system("notepad file.txt"); // открывать файл
-	system("more file.txt"); // открывать содержимое файла в консоли  
+	fout.close();					// РїРѕС‚РѕРєРё РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РЅСѓР¶РЅРѕ Р·Р°РєСЂС‹РІР°С‚СЊ
+	//system("notepad file.txt"); // РѕС‚РєСЂС‹РІР°С‚СЊ С„Р°Р№Р»
+	system("more file.txt"); // РѕС‚РєСЂС‹РІР°С‚СЊ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р° РІ РєРѕРЅСЃРѕР»Рё  
 #endif // WRITE_TO_FILE
 
 #ifdef READ_FROM_FILE
-	ifstream fin;	// создаём поток
+	ifstream fin;	// СЃРѕР·РґР°С‘Рј РїРѕС‚РѕРє
 	fin.open("file.txt");
 	
 	const unsigned int SIZE = 10240;
-	char sz_buffer[SIZE]{};	// в эту строку будем читать из файла
-	// sz - String Zero (строка, заканчивающаяся нулём)
-	if (fin.is_open())		// проверяем, открыт ли файл
+	char sz_buffer[SIZE]{};	// РІ СЌС‚Сѓ СЃС‚СЂРѕРєСѓ Р±СѓРґРµРј С‡РёС‚Р°С‚СЊ РёР· С„Р°Р№Р»Р°
+	// sz - String Zero (СЃС‚СЂРѕРєР°, Р·Р°РєР°РЅС‡РёРІР°СЋС‰Р°СЏСЃСЏ РЅСѓР»С‘Рј)
+	if (fin.is_open())		// РїСЂРѕРІРµСЂСЏРµРј, РѕС‚РєСЂС‹С‚ Р»Рё С„Р°Р№Р»
 	{
-		//TODO: если открыт, будем читать
-		while (!fin.eof())	// пока НЕ конец файла, 
+		//TODO: РµСЃР»Рё РѕС‚РєСЂС‹С‚, Р±СѓРґРµРј С‡РёС‚Р°С‚СЊ
+		while (!fin.eof())	// РїРѕРєР° РќР• РєРѕРЅРµС† С„Р°Р№Р»Р°, 
 		{
-			// будет производиться чтение
+			// Р±СѓРґРµС‚ РїСЂРѕРёР·РІРѕРґРёС‚СЊСЃСЏ С‡С‚РµРЅРёРµ
 			// eof() - End Of File.
-			//fin >> sz_buffer;				// для строки без пробелов
+			//fin >> sz_buffer;				// РґР»СЏ СЃС‚СЂРѕРєРё Р±РµР· РїСЂРѕР±РµР»РѕРІ
 			fin.ignore();
-			fin.getline(sz_buffer, SIZE);	// для строки с пробелами
+			fin.getline(sz_buffer, SIZE);	// РґР»СЏ СЃС‚СЂРѕРєРё СЃ РїСЂРѕР±РµР»Р°РјРё
 			cout << sz_buffer << endl;
 		}
 	}
 	else
 	{
-		cerr << "Error: file not found" << endl; // cerr - канал ошибок (ошибки принято отправлять в этот канал)
+		cerr << "Error: file not found" << endl; // cerr - РєР°РЅР°Р» РѕС€РёР±РѕРє (РѕС€РёР±РєРё РїСЂРёРЅСЏС‚Рѕ РѕС‚РїСЂР°РІР»СЏС‚СЊ РІ СЌС‚РѕС‚ РєР°РЅР°Р»)
 	}
 	fin.close();
 
 #endif // READ_FROM_FILE
 
-	// В файле 201 RAW.txt поменять местами столбики с МАС-адресом и IP-адресом
-	// Исходный файл должен остаться неизменным, программа должна создать новый изменённый файл
+	// Р’ С„Р°Р№Р»Рµ 201 RAW.txt РїРѕРјРµРЅСЏС‚СЊ РјРµСЃС‚Р°РјРё СЃС‚РѕР»Р±РёРєРё СЃ РњРђРЎ-Р°РґСЂРµСЃРѕРј Рё IP-Р°РґСЂРµСЃРѕРј
+	// РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» РґРѕР»Р¶РµРЅ РѕСЃС‚Р°С‚СЊСЃСЏ РЅРµРёР·РјРµРЅРЅС‹Рј, РїСЂРѕРіСЂР°РјРјР° РґРѕР»Р¶РЅР° СЃРѕР·РґР°С‚СЊ РЅРѕРІС‹Р№ РёР·РјРµРЅС‘РЅРЅС‹Р№ С„Р°Р№Р»
 	// 201 ready.txt
 	/*ofstream fout("201 ready.txt");
 	fout << "Hello";
@@ -54,29 +54,29 @@ void main()
 	system("more 201 ready.txt");
 	system("notepad 201 ready.txt");*/
 
-	const unsigned int SIZE = 256; // выделяем размер буфера в байтах
+	const unsigned int SIZE = 256; // РІС‹РґРµР»СЏРµРј СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР° РІ Р±Р°Р№С‚Р°С…
 	char sz_source_filename[SIZE] = {};
 	char sz_destination_filename[SIZE] = {};
-	cout << "Введите имя исходного файла: "; cin.getline(sz_source_filename, SIZE);
-	// 1) Находим последнюю точку в строке
+	cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ РёСЃС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°: "; cin.getline(sz_source_filename, SIZE);
+	// 1) РќР°С…РѕРґРёРј РїРѕСЃР»РµРґРЅСЋСЋ С‚РѕС‡РєСѓ РІ СЃС‚СЂРѕРєРµ
 	char* extension = strrchr(sz_source_filename, '.');
-	// char* strchr(char* str, char symbol); синтаксис функции
-	// char* strrchr(char* str, char symbol); синтаксис функции
-	nullptr; // указатель на 0, указатель в никуда.
-	// 2) Теперь нужно проверить, являются ли символы после последней точке правильным расширением файла
+	// char* strchr(char* str, char symbol); СЃРёРЅС‚Р°РєСЃРёСЃ С„СѓРЅРєС†РёРё
+	// char* strrchr(char* str, char symbol); СЃРёРЅС‚Р°РєСЃРёСЃ С„СѓРЅРєС†РёРё
+	nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° 0, СѓРєР°Р·Р°С‚РµР»СЊ РІ РЅРёРєСѓРґР°.
+	// 2) РўРµРїРµСЂСЊ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ, СЏРІР»СЏСЋС‚СЃСЏ Р»Рё СЃРёРјРІРѕР»С‹ РїРѕСЃР»Рµ РїРѕСЃР»РµРґРЅРµР№ С‚РѕС‡РєРµ РїСЂР°РІРёР»СЊРЅС‹Рј СЂР°СЃС€РёСЂРµРЅРёРµРј С„Р°Р№Р»Р°
 	if (extension == nullptr || strcmp(extension, ".txt") != 0)
 	{
 		strcat(sz_source_filename, ".txt");
 	}
 
-	//cout << (extension ? extension : "У файла нет расширения") << endl;
-	cout << "Введите имя конечного файла: "; cin.getline(sz_destination_filename, SIZE);
+	//cout << (extension ? extension : "РЈ С„Р°Р№Р»Р° РЅРµС‚ СЂР°СЃС€РёСЂРµРЅРёСЏ") << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ РєРѕРЅРµС‡РЅРѕРіРѕ С„Р°Р№Р»Р°: "; cin.getline(sz_destination_filename, SIZE);
 	extension = strrchr(sz_destination_filename, '.');
 	if (extension == nullptr || strcmp(extension, ".txt") != 0)
 	{
 		strcat(sz_destination_filename, ".txt");
 	}
-	//cout << (extension ? extension : "У файла нет расширения") << endl;
+	//cout << (extension ? extension : "РЈ С„Р°Р№Р»Р° РЅРµС‚ СЂР°СЃС€РёСЂРµРЅРёСЏ") << endl;
 
 	ifstream fin(sz_source_filename);
 	ofstream fout(sz_destination_filename);
@@ -105,10 +105,10 @@ void main()
 
 	char sz_cmd[SIZE] = "notepad ";
 	strcat(sz_cmd, sz_destination_filename);
-	// strcat(sz_dst, sz_src); //strcat выполняет конкатенацию (слияние) строк,
-	// например, "Hello" + "World" = "HelloWorld";
-	// sz_dst - строка получатель, в которую будет сохранен результат конкатенации
-	// sz_src - строка источник, которая будет добавлена к получателю
+	// strcat(sz_dst, sz_src); //strcat РІС‹РїРѕР»РЅСЏРµС‚ РєРѕРЅРєР°С‚РµРЅР°С†РёСЋ (СЃР»РёСЏРЅРёРµ) СЃС‚СЂРѕРє,
+	// РЅР°РїСЂРёРјРµСЂ, "Hello" + "World" = "HelloWorld";
+	// sz_dst - СЃС‚СЂРѕРєР° РїРѕР»СѓС‡Р°С‚РµР»СЊ, РІ РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµС‚ СЃРѕС…СЂР°РЅРµРЅ СЂРµР·СѓР»СЊС‚Р°С‚ РєРѕРЅРєР°С‚РµРЅР°С†РёРё
+	// sz_src - СЃС‚СЂРѕРєР° РёСЃС‚РѕС‡РЅРёРє, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅР° Рє РїРѕР»СѓС‡Р°С‚РµР»СЋ
 
 	system(sz_cmd);
 }
